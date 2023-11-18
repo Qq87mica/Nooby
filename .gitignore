@@ -12,7 +12,7 @@ class Auction:
         else:
             print(f"Sorry, the bid amount must be higher than the current price of ${self.current_price}")
 
-# Primjer korištenja
+# demo use
 auction_item = "Painting"
 starting_price = 100
 auction = Auction(auction_item, starting_price)
