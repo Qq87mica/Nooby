@@ -1,55 +1,32 @@
-*.gem
-*.rbc
-/.config
-/coverage/
-/InstalledFiles
-/pkg/
-/spec/reports/
-/spec/examples.txt
-/test/tmp/
-/test/version_tmp/
-/tmp/
+*.skb
+class Auction:
+    def __init__(self, item, starting_price):
+        self.item = item
+        self.current_price = starting_price
+        self.bids = []
 
-# Used by dotenv library to load environment variables.
-# .env
+    def place_bid(self, bidder, bid_amount):
+        if bid_amount > self.current_price:
+            self.bids.append({'bidder': bidder, 'amount': bid_amount})
+            self.current_price = bid_amount
+            print(f"Bid placed by {bidder} for ${bid_amount}")
+        else:
+            print(f"Sorry, the bid amount must be higher than the current price of ${self.current_price}")
 
-# Ignore Byebug command history file.
-.byebug_history
+    def close_auction(self):
+        if self.bids:
+            winning_bid = max(self.bids, key=lambda x: x['amount'])
+            print(f"Auction closed. {winning_bid['bidder']} won the {self.item} for ${winning_bid['amount']}.")
+        else:
+            print(f"Auction closed. No bids received for the {self.item}.")
 
-## Specific to RubyMotion:
-.dat*
-.repl_history
-build/
-*.bridgesupport
-build-iPhoneOS/
-build-iPhoneSimulator/
+# Usage example
+auction_item = "Painting"
+starting_price = 100
+auction = Auction(auction_item, starting_price)
 
-## Specific to RubyMotion (use of CocoaPods):
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you 
+auction.place_bid("Bidder1", 150)
+auction.place_bid("Bidder2", 120)
+auction.place_bid("Bidder3", 180)
 
-Of course, here is the complete code for a `.gitignore` file:
-
-```
-# Ignore all files with the .kpd extension
-*.kpd
-
-# Ignore the node_modules directory and all its contents
-/node_modules
-
-# Ignore log files
-*.log
-
-# Ignore compiled files and directories
-dist/
-build/
-
-# Ignore sensitive data files (e.g. files containing passwords)
-sensitive_file.txt
-
-# Ignore all .pdf files
-*.pdf
-```
-
-This code defines patterns for files and directories that you want to ignore when working with Git. Modify or add new lines according to your needs. Remember that the `.gitignore` file should be placed in the root directory of your project for Git to recognize it.
+auction.close_auction()
