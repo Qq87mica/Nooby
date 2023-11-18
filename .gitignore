@@ -21,7 +21,7 @@ auction.place_bid("Bidder1", 150)
 auction.place_bid("Bidder2", 120)
 
 class Auction:
-    # Prethodni kod ostaje nepromijenjen
+    # last cod dont change
 
     def close_auction(self):
         if self.bids:
@@ -30,6 +30,6 @@ class Auction:
         else:
             print(f"Auction closed. No bids received for the {self.item}.")
 
-# Nastavak primjera korištenja
+#\ demo continue use
 auction.place_bid("Bidder3", 180)
 auction.close_auction()
