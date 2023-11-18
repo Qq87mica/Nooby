@@ -28,6 +28,7 @@ build-iPhoneSimulator/
 #
 # We recommend against adding the Pods directory to your .gitignore. However
 # you 
+
 Of course, here is the complete code for a `.gitignore` file:
 
 ```
